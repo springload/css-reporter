@@ -1,10 +1,16 @@
 {
   "name": "css-reporter",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "CSS Reporter",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "css-reporter": "./index.js"
+  },
+  "scripts": {
+    "start": "node ./index"
   },
   "repository": {
     "type": "git",
@@ -28,5 +34,6 @@
     "express": "^4.10.1",
     "parker": "0.0.8",
     "nunjucks": "^1.1.0"
-  }
+  },
+  "devDependencies": {}
 }

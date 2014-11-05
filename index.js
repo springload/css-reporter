@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var fs = require("fs");
 var css = require('css');
 var Parker = require('parker');
@@ -150,6 +152,6 @@ app.get("/", function index(req, res, next) {
 
 
 var server = app.listen(port, function () {
-    console.log("CSS Report on localhost:", port);
+    console.log("CSS Report on http://localhost:" +port+"");
 });
 
