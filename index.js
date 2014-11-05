@@ -26,18 +26,28 @@ function generateStylesheetReport(filePaths) {
 
     function parseStyleSheet(item) {
         var stylesheet;
+        var message;
 
         try {
             stylesheet = fs.readFileSync(item, "utf-8");
             console.log("Inspecting ", item);
         } catch(e) {
-            var message = "Couldn't read", item;
+            message = "Couldn't read", item;
             stylesheetResults.push({ errors: message, path: item });
             console.log(message);
             return;
         }
 
-        var obj = css.parse(stylesheet);
+        var obj;
+
+        try {
+            obj = css.parse(stylesheet);
+        } catch(e) {
+            message = "Couldn't parse " + item;
+            stylesheetResults.push({ errors: message, path: item });
+            console.log(message);
+            return;
+        }
 
         var rules = obj.stylesheet.rules;
         var specificityMap = [];
@@ -51,8 +61,17 @@ function generateStylesheetReport(filePaths) {
                 var specs = [];
 
                 if (rule.selectors.length) {
-                    rule.selectors.forEach(function iterate(selector) {
-                        var res = SpecificityPerSelector.measure(selector);
+                    rule.selectors.forEach(function iterateSelectors(selector) {
+
+                        var res;
+                        // console.log(selector);
+                        try {
+                            res = SpecificityPerSelector.measure(selector);
+                        } catch (e) {
+                            console.log("couldn't decode selector ", selector);
+                            res = 0;
+                            // return;
+                        }
 
                         _specificity.push(res);
                         _lines.push(rule.position.start.line);

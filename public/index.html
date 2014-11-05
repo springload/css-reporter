@@ -119,7 +119,9 @@
             Looking in {{ pattern }}
         </p>
         {% endif %}
-
+        <script>
+            var chartData = [];
+        </script>
         {% for stylesheet in stylesheets %}
             <div class="card">
                 <div class="card__header">
@@ -130,9 +132,12 @@
                 <div class="card__body">
                     <h4>Specificity</h4>
                     <div>
-                        <div class="chart chart-{{loop.index0}}" data-chart='{{ stylesheet.chart|json }}'>
+                        <div class="chart chart-{{loop.index0}}" data-chart="{{loop.index0}}">
                             <span class="subtle">Loading..</span>
                         </div>
+                        <script>
+                            chartData.push({{ stylesheet.chart|json }});
+                        </script>
                     </div>
                     <h4>Metrics</h4>
                     <div class="report">
@@ -233,13 +238,11 @@
              */
             function newChart(el) {
                 var chart;
-                var data = JSON.parse(el.dataset.chart);
+                var data = chartData[+el.dataset.chart];
 
                 if (!el) {
                     return;
                 }
-
-
 
                 isMinified = false;
 
