@@ -1,0 +1,32 @@
+{
+  "name": "css-reporter",
+  "version": "0.0.1",
+  "description": "CSS Reporter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:springload/css-reporter.git"
+  },
+  "keywords": [
+    "CSS",
+    "Harry",
+    "Roberts",
+    "Specificity"
+  ],
+  "author": "Springload",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/springload/css-reporter/issues"
+  },
+  "homepage": "https://github.com/springload/css-reporter",
+  "dependencies": {
+    "css": "^2.1.0",
+    "glob": "^4.0.6",
+    "express": "^4.10.1",
+    "parker": "0.0.8",
+    "nunjucks": "^1.1.0"
+  }
+}
