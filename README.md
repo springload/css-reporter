@@ -14,6 +14,6 @@ And visit `localhost:9000` in your browser
 
 ## Known issues
 
-* Rules inside media queries don't behave properly
+* Selectors inside media queries don't behave properly
 * !importants are ignored (they're a rule, not a selector)
 * Some issues with ID selectors not getting picked up.
